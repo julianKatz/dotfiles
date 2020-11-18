@@ -17,6 +17,7 @@ zplug 'romkatv/powerlevel10k', as:theme, depth:1
 
 # oh-my-zsh specific
 zplug "plugins/git",       from:oh-my-zsh
+zplug "plugins/gitfast",   from:oh-my-zsh
 zplug "plugins/vi-mode",   from:oh-my-zsh
 zplug "plugins/fzf",       from:oh-my-zsh
 zplug "plugins/kubectl",   from:oh-my-zsh # for some reason this won't source the autocomplete, even though it runs the script
@@ -63,7 +64,7 @@ export LANGUAGE="en_US.UTF-8"
 # zstyle ':completion:*:*:make:*' tag-order 'targets'
 
 # Somehow this improves autocomplete
-#zstyle ':completion:*' users root $USER
+zstyle ':completion:*' users root $USER
 
 export PATH="$PATH:${HOME}/.cargo/bin"
 
@@ -95,6 +96,8 @@ alias dev="cd ${HOME}/dev"
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
 
 alias gpmr="git pull origin master --rebase"
+alias glmr="git pull origin master --rebase"
+alias glur="git pull upstream master --rebase"
 alias gdno="git --no-pager diff --name-only"
 alias gcho="git branch | fzf | xargs -I {} git checkout {}"
 alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
