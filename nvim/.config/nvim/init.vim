@@ -64,7 +64,11 @@ Plug 'google/vim-searchindex' " This is broken by incsearch
 Plug 'psliwka/vim-smoothie'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion' 
-
+if has('nvim-0.5')
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'romgrk/nvim-treesitter-context'
+endif
+" Plug 'wellle/context.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -329,6 +333,23 @@ Plug 'chase/vim-ansible-yaml'
 call plug#end()
 
 colorscheme onedark
+
+if has('nvim-0.5')
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+EOF
+
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+
+endif
+
 
 " ----------- GOOGLE CONFIG -----------
 if filereadable("/usr/local/google/home/juliankatz/.config/nvim/google-specific.vim")
