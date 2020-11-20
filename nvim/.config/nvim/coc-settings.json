@@ -21,6 +21,9 @@
   // don't know what this does
   "coc.preferences.hoverTarget": "float",
 
+  // adjust the references preview window height
+  "list.maxPreviewHeight": 30,
+
   // Doesn't seem to be working
   "codeLens.enable": true,
 
