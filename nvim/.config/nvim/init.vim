@@ -68,26 +68,19 @@ if has('nvim-0.5')
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'romgrk/nvim-treesitter-context'
 endif
-" Plug 'wellle/context.vim'
+Plug 'airblade/vim-gitgutter'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'haya14busa/incsearch.vim'
+Plug 'ojroques/vim-oscyank'
 
-  " Basic Usage
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-
-  " Advanced Usage
-  map n  <Plug>(incsearch-nohl-n)
-  map N  <Plug>(incsearch-nohl-N)
-  map *  <Plug>(incsearch-nohl-*)
-  map #  <Plug>(incsearch-nohl-#)
-  map g* <Plug>(incsearch-nohl-g*)
-  map g# <Plug>(incsearch-nohl-g#)
+  augroup OSCYank
+    autocmd!
+    autocmd TextYankPost *
+      \ if v:event.operator is 'y' && v:event.regname is '' | call YankOSC52(getreg('+')) | endif
+  augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -103,22 +96,6 @@ Plug 'haya14busa/incsearch-easymotion.vim'
   " Julian Usage
   map <space><space>/ <Plug>(incsearch-easymotion-/)
   map <space><space>? <Plug>(incsearch-easymotion-?)
-
-  " Advanced Usage
-
-  " incsearch.vim x fuzzy x vim-easymotion
-
-  " function! s:config_easyfuzzymotion(...) abort
-  "   return extend(copy({
-  "   \   'converters': [incsearch#config#fuzzy#converter()],
-  "   \   'modules': [incsearch#config#easymotion#module()],
-  "   \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  "   \   'is_expr': 0,
-  "   \   'is_stay': 1
-  "   \ }), get(a:, 1, {}))
-  " endfunction
-  "
-  " noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

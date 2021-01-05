@@ -1,3 +1,5 @@
+# zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -85,6 +87,7 @@ alias ll="exa -l"
 alias l="exa -la"
 alias fd="fdfind"
 alias vimrc="cd ~/dotfiles/nvim/.config/nvim; vim init.vim"
+alias zshrc="cd ~/dotfiles/zsh/; vim .zshrc"
 alias dotfiles="cd ~/dotfiles"
 alias gld="gcloud"
 alias szsh="source ~/.zshrc"
@@ -104,6 +107,9 @@ alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
 alias gcfd="git clean -fd"
 alias gft="git fetch --tags"
 alias gl="git log"
+alias ggpf="git push origin $(git_current_branch) --force-with-lease"
+# overwrite the verbose part of this alias
+alias gc!="git commit --amend"
 
 # variables for faster kubectl
 alias kls="kubectl config get-contexts"
@@ -181,3 +187,5 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# zprof
