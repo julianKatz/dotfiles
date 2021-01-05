@@ -39,3 +39,5 @@
 	rebase = false
 [core]
 	pager = less -+$LESS -R
+[url "sso://gke-internal.googlesource.com"]
+	insteadof = https://gke-internal.googlesource.com
