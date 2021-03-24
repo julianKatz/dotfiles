@@ -62,8 +62,8 @@ export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 
 # Fix make target completion
-# autoload -U compinit && compinit
-# zstyle ':completion:*:*:make:*' tag-order 'targets'
+autoload -U compinit && compinit
+zstyle ':completion:*:*:make:*' tag-order 'targets'
 
 # Somehow this improves autocomplete
 zstyle ':completion:*' users root $USER
@@ -85,6 +85,7 @@ alias cat-basic="$(which cat)"
 alias cat="bat"
 alias ll="exa -l"
 alias l="exa -la"
+alias ls="ls --color=tty"
 alias fd="fdfind"
 alias vimrc="cd ~/dotfiles/nvim/.config/nvim; vim init.vim"
 alias zshrc="cd ~/dotfiles/zsh/; vim .zshrc"
