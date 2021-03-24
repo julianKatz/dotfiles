@@ -76,6 +76,7 @@ nmap <leader>rf <Plug>(coc-refactor)
 nmap <silent> <leader>d  :<C-u>CocFzfList diagnostics<cr>
 nmap <silent> <leader>cl  :CocFzfList<cr>
 nmap <silent> <leader>cc  :CocCommand<cr>
+nmap <silent> <leader>cs  :CocFzfList symbols<cr>
 " Manage extensions
 " nmap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
@@ -107,3 +108,8 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" Disable coc during easymotion jumps.  Meant to surpress the diagnostic
+" output.
+autocmd User EasyMotionPromptBegin silent! CocDisable
+autocmd User EasyMotionPromptEnd silent! CocEnable
