@@ -1,5 +1,5 @@
 [http]
-	cookieFile = /usr/local/google/home/juliankatz/.gitcookies
+	cookiefile = /usr/local/google/home/juliankatz/.gitcookies
 	saveCookies = true
 	sslVerify = false
 [user]
@@ -39,3 +39,7 @@
 	rebase = false
 [core]
 	pager = less -+$LESS -R
+[url "sso://gke-internal.googlesource.com"]
+	insteadof = https://gke-internal.googlesource.com
+[checkout]
+  defaultRemote = origin

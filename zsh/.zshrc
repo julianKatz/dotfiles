@@ -1,3 +1,5 @@
+# zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -17,6 +19,7 @@ zplug 'romkatv/powerlevel10k', as:theme, depth:1
 
 # oh-my-zsh specific
 zplug "plugins/git",       from:oh-my-zsh
+zplug "plugins/gitfast",   from:oh-my-zsh
 zplug "plugins/vi-mode",   from:oh-my-zsh
 zplug "plugins/fzf",       from:oh-my-zsh
 zplug "plugins/kubectl",   from:oh-my-zsh # for some reason this won't source the autocomplete, even though it runs the script
@@ -59,11 +62,11 @@ export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 
 # Fix make target completion
-# autoload -U compinit && compinit
-# zstyle ':completion:*:*:make:*' tag-order 'targets'
+autoload -U compinit && compinit
+zstyle ':completion:*:*:make:*' tag-order 'targets'
 
 # Somehow this improves autocomplete
-#zstyle ':completion:*' users root $USER
+zstyle ':completion:*' users root $USER
 
 export PATH="$PATH:${HOME}/.cargo/bin"
 
@@ -82,8 +85,10 @@ alias cat-basic="$(which cat)"
 alias cat="bat"
 alias ll="exa -l"
 alias l="exa -la"
+alias ls="ls --color=tty"
 alias fd="fdfind"
 alias vimrc="cd ~/dotfiles/nvim/.config/nvim; vim init.vim"
+alias zshrc="cd ~/dotfiles/zsh/; vim .zshrc"
 alias dotfiles="cd ~/dotfiles"
 alias gld="gcloud"
 alias szsh="source ~/.zshrc"
@@ -95,12 +100,17 @@ alias dev="cd ${HOME}/dev"
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
 
 alias gpmr="git pull origin master --rebase"
+alias glmr="git pull origin master --rebase"
+alias glur="git pull upstream master --rebase"
 alias gdno="git --no-pager diff --name-only"
 alias gcho="git branch | fzf | xargs -I {} git checkout {}"
 alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
 alias gcfd="git clean -fd"
 alias gft="git fetch --tags"
 alias gl="git log"
+alias ggpf="git push origin $(git_current_branch) --force-with-lease"
+# overwrite the verbose part of this alias
+alias gc!="git commit --amend"
 
 # variables for faster kubectl
 alias kls="kubectl config get-contexts"
@@ -181,3 +191,5 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# zprof

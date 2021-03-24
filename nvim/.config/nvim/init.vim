@@ -64,26 +64,23 @@ Plug 'google/vim-searchindex' " This is broken by incsearch
 Plug 'psliwka/vim-smoothie'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion' 
-
+if has('nvim-0.5')
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'romgrk/nvim-treesitter-context'
+endif
+Plug 'airblade/vim-gitgutter'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'haya14busa/incsearch.vim'
+Plug 'ojroques/vim-oscyank'
 
-  " Basic Usage
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-
-  " Advanced Usage
-  map n  <Plug>(incsearch-nohl-n)
-  map N  <Plug>(incsearch-nohl-N)
-  map *  <Plug>(incsearch-nohl-*)
-  map #  <Plug>(incsearch-nohl-#)
-  map g* <Plug>(incsearch-nohl-g*)
-  map g# <Plug>(incsearch-nohl-g#)
+  augroup OSCYank
+    autocmd!
+    autocmd TextYankPost *
+      \ if v:event.operator is 'y' && v:event.regname is '' | call YankOSC52(getreg('+')) | endif
+  augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -100,22 +97,6 @@ Plug 'haya14busa/incsearch-easymotion.vim'
   map <space><space>/ <Plug>(incsearch-easymotion-/)
   map <space><space>? <Plug>(incsearch-easymotion-?)
 
-  " Advanced Usage
-
-  " incsearch.vim x fuzzy x vim-easymotion
-
-  " function! s:config_easyfuzzymotion(...) abort
-  "   return extend(copy({
-  "   \   'converters': [incsearch#config#fuzzy#converter()],
-  "   \   'modules': [incsearch#config#easymotion#module()],
-  "   \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  "   \   'is_expr': 0,
-  "   \   'is_stay': 1
-  "   \ }), get(a:, 1, {}))
-  " endfunction
-  "
-  " noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,6 +104,8 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'joshdick/onedark.vim'
 
   set notermguicolors
+
+  let g:onedark_terminal_italics=1
 
   augroup colorextend
     autocmd!
@@ -140,6 +123,10 @@ Plug 'joshdick/onedark.vim'
 
   syntax enable
 
+" Plug 'romainl/flattened'
+"   set notermguicolors
+"   syntax enable
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -156,8 +143,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 
   function! OpenFind()
     silent NERDTreeFind
-    silent NERDTreeTabsOpen
-    silent NERDTreeFocusToggle
+    silent NERDTreeSteppedOpen
   endfunction
 
   let NERDTreeIgnore=['\.DS_Store$']
@@ -320,6 +306,20 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
   execute "source" VIM_CONFIG_DIR . "/cocnvim.vim"
 
+Plug 'liuchengxu/vista.vim'
+
+  let g:vista_default_executive = 'coc'
+  " let g:vista_sidebar_width = '50'
+  let g:vista_sidebar_open_cmd = '50vsplit' "Opens vista in the tab that's focused when I open it
+  let g:vista_fzf_preview = ['right:50%']
+  " let g:vista_echo_cursor_strategy = 'floating_win' Can't figure out what this does
+  let g:vista_close_on_jump = 1
+  let g:vista_close_on_fzf_select = 1
+  let g:vista_update_on_text_changed = 1
+
+  nmap <silent> <leader>o  :<C-u>Vista!!<cr>
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " YAML
@@ -329,6 +329,25 @@ Plug 'chase/vim-ansible-yaml'
 call plug#end()
 
 colorscheme onedark
+" colorscheme flattened_light
+" set background=light
+
+if has('nvim-0.5')
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+EOF
+
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+
+endif
+
 
 " ----------- GOOGLE CONFIG -----------
 if filereadable("/usr/local/google/home/juliankatz/.config/nvim/google-specific.vim")

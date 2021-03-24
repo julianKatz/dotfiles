@@ -18,8 +18,10 @@
     "deepCompletion": true
   },
 
-  // don't know what this does
-  "coc.preferences.hoverTarget": "float",
+  // adjust the references preview window height
+  "list.maxPreviewHeight": 30,
+
+  "list.source.symbols.excludes": ["vendor/**"],
 
   // Doesn't seem to be working
   "codeLens.enable": true,
@@ -32,20 +34,29 @@
     "v": "action:vsplit"
   },
 
-  // makes the completion automatically select the first completed item
-  "suggest.noselect": false,
-  
   // ---- DIAGNOSTIC INFO ---- //
 
   // Adds errors inline next to code in red
-  "diagnostic.virtualText": true,
+  "diagnostic.virtualText": false,
   "diagnostic.virtualTextPrefix": "      ",
+  "diagnostic.virtualTextLineSeparator": " \\ ",
 
-  // not sure if this does anything
-  "diagnostic.messageTarget": "echo",
+  // Show the virtual window with the error
+  "diagnostic.enableMessage": "always",
+  "diagnostic.messageTarget": "float",
+  "diagnostic.enableSign": true,
+  "diagnostic.errorSign": "✗" ,
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.format": "✗ %message",
+  "diagnostic.messageDelay": 0,
+  "diagnostic.checkCurrentLine": true,
 
-  // Turns off messages to not interfere with type info from vim-go
-  "diagnostic.enableMessage": "never",
+  // makes the completion automatically select the first completed item
+  "suggest.noselect": false,
+  "suggest.defaultSortMethod": "alphabetical",
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
 
   "suggest.completionItemKindLabels": {
 		"keyword": "\uf1de",

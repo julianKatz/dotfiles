@@ -1,3 +1,20 @@
+" COC EXTENSIONS
+Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+
+Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
+ 
+" This on only works when installed with CocInstall"
+" Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "
+
+Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
+  " Key mapping for special yank list to go with this extension
+  nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+
 " Better display for messages
 set cmdheight=2
 
@@ -36,9 +53,10 @@ imap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Use `[d` and `]d` to navigate diagnostics
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>i  <Plug>(coc-diagnostic-info)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -55,15 +73,21 @@ nmap <leader>rf <Plug>(coc-refactor)
 " vmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
 " " Show all diagnostics
-nmap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
-nmap <silent> <leader>cl  :CocList<cr>
+nmap <silent> <leader>d  :<C-u>CocFzfList diagnostics<cr>
+nmap <silent> <leader>cl  :CocFzfList<cr>
 nmap <silent> <leader>cc  :CocCommand<cr>
+nmap <silent> <leader>cs  :CocFzfList symbols<cr>
 " Manage extensions
 " nmap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
 " nmap <silent> <leader>c  :<C-u>CocList commands<cr>
 " " Find symbol of current document
-nmap <silent> <leader>col  :<C-u>CocList outline<cr>
+
+" Original cocfzflist version
+" nmap <silent> <leader>col  :<C-u>CocFzfList outline<cr>
+" Newer version, based on vista
+nmap <silent> <leader>col  :<C-u>Vista finder fzf<cr>
+
 " " Search workspace symbols
 " nmap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 " " Do default action for next item.
@@ -85,17 +109,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" COC EXTENSIONS
-Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-
-Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
- 
-" This on only works when installed with CocInstall"
-" Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "
-
-Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
-  " Key mapping for special yank list to go with this extension
-  nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+" Disable coc during easymotion jumps.  Meant to surpress the diagnostic
+" output.
+autocmd User EasyMotionPromptBegin silent! CocDisable
+autocmd User EasyMotionPromptEnd silent! CocEnable
