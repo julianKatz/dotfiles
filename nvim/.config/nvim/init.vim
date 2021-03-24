@@ -105,6 +105,8 @@ Plug 'joshdick/onedark.vim'
 
   set notermguicolors
 
+  let g:onedark_terminal_italics=1
+
   augroup colorextend
     autocmd!
 
@@ -120,6 +122,10 @@ Plug 'joshdick/onedark.vim'
   augroup END
 
   syntax enable
+
+" Plug 'romainl/flattened'
+"   set notermguicolors
+"   syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -137,8 +143,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 
   function! OpenFind()
     silent NERDTreeFind
-    silent NERDTreeTabsOpen
-    silent NERDTreeFocusToggle
+    silent NERDTreeSteppedOpen
   endfunction
 
   let NERDTreeIgnore=['\.DS_Store$']
@@ -301,6 +306,20 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
   execute "source" VIM_CONFIG_DIR . "/cocnvim.vim"
 
+Plug 'liuchengxu/vista.vim'
+
+  let g:vista_default_executive = 'coc'
+  " let g:vista_sidebar_width = '50'
+  let g:vista_sidebar_open_cmd = '50vsplit' "Opens vista in the tab that's focused when I open it
+  let g:vista_fzf_preview = ['right:50%']
+  " let g:vista_echo_cursor_strategy = 'floating_win' Can't figure out what this does
+  let g:vista_close_on_jump = 1
+  let g:vista_close_on_fzf_select = 1
+  let g:vista_update_on_text_changed = 1
+
+  nmap <silent> <leader>o  :<C-u>Vista!!<cr>
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " YAML
@@ -310,6 +329,8 @@ Plug 'chase/vim-ansible-yaml'
 call plug#end()
 
 colorscheme onedark
+" colorscheme flattened_light
+" set background=light
 
 if has('nvim-0.5')
 
