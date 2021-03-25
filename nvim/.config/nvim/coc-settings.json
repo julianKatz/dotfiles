@@ -47,10 +47,8 @@
   "diagnostic.enableSign": true,
   "diagnostic.errorSign": "✗" ,
   "diagnostic.warningSign": "⚠",
-  "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.format": "✗ %message",
-  "diagnostic.messageDelay": 0,
-  "diagnostic.checkCurrentLine": true,
+  "diagnostic.format": "%message => %source",
+  "diagnostic.messageDelay": 100,
 
   // makes the completion automatically select the first completed item
   "suggest.noselect": false,
