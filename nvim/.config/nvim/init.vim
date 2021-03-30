@@ -82,6 +82,8 @@ Plug 'ojroques/vim-oscyank'
       \ if v:event.operator is 'y' && v:event.regname is '' | call YankOSC52(getreg('+')) | endif
   augroup END
 
+  command! F f<bar>OSCYankReg%
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
