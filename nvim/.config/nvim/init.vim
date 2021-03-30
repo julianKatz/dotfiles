@@ -222,7 +222,7 @@ Plug 'itchyny/lightline.vim'
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \             [ 'cocstatus', 'readonly', 'relativepath', 'modified' ] ]
     \ },
     \ 'component_function': {
     \   'cocstatus': 'coc#status'
