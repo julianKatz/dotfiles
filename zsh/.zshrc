@@ -132,7 +132,10 @@ alias tmkw="tmux kill-window"
 ##################################
 
 ### KUBECTL ###
-source <(command kubectl completion zsh)
+if command -v kubectl &> /dev/null
+then
+  source <(command kubectl completion zsh)
+fi
 # kubectl () {
 #     command kubectl $*
 #     if [[ -z $KUBECTL_COMPLETE ]]
