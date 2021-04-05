@@ -45,8 +45,8 @@
   "diagnostic.enableMessage": "always",
   "diagnostic.messageTarget": "float",
   "diagnostic.enableSign": true,
-  "diagnostic.errorSign": "✗" ,
-  "diagnostic.warningSign": "⚠",
+  "diagnostic.errorSign": "\u2717" ,
+  "diagnostic.warningSign": "\u26A0",
   "diagnostic.format": "%message => %source",
   "diagnostic.messageDelay": 100,
 
