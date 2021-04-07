@@ -240,38 +240,9 @@ Plug 'itchyny/lightline.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" GO
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-"
-"   " let g:go_fmt_fail_silently = 1
-"   " let g:go_fmt_experimental = 1
-"
-"   " autocmd FileType go nmap <leader>b  <Plug>(go-build)
-"   autocmd FileType go nnoremap <leader>R  <Plug>(go-run)
-"   autocmd FileType go nnoremap <silent><leader>s :GoAlternate<cr>
-"   autocmd FileType go nnoremap <leader>t  <Plug>(go-test)
-"   " autocmd FileType go nmap <Leader>i  <Plug>(go-info)
-"
-"   " Allows for vim-go to save the file when we run :GoBuild
-"   set autowrite
-"
-"   " disable vim-go :GoDef short cut (gd)
-"   " this is handled by LanguageClient [LC]
-"   let g:go_def_mapping_enabled = 0
-"
-"   let g:go_auto_type_info = 1
-"
-"   let g:go_diagnostics_enabled = 0
-"
-"   let g:go_gopls_enabled = 0
-"
-"   let g:go_info_mode = "guru"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " JAVASCRIPT
 Plug 'pangloss/vim-javascript'
-"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mxw/vim-jsx'
 
