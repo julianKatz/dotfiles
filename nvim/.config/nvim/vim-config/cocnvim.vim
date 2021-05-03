@@ -7,7 +7,7 @@ Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
  
 " This on only works when installed with CocInstall"
-" Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "
+Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "
 
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
   " Key mapping for special yank list to go with this extension
@@ -76,6 +76,7 @@ nmap <leader>rf <Plug>(coc-refactor)
 nmap <silent> <leader>d  :<C-u>CocFzfList diagnostics<cr>
 nmap <silent> <leader>cl  :CocFzfList<cr>
 nmap <silent> <leader>cc  :CocCommand<cr>
+" requires the `pynvim` to be installed on the system
 nmap <silent> <leader>cs  :CocFzfList symbols<cr>
 " Manage extensions
 " nmap <silent> <leader>e  :<C-u>CocList extensions<cr>

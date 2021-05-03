@@ -63,7 +63,7 @@ Plug 'djoshea/vim-autoread'
 Plug 'google/vim-searchindex' " This is broken by incsearch
 Plug 'psliwka/vim-smoothie'
 Plug 'honza/vim-snippets'
-Plug 'easymotion/vim-easymotion' 
+Plug 'easymotion/vim-easymotion'
 if has('nvim-0.5')
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'romgrk/nvim-treesitter-context'
@@ -82,7 +82,7 @@ Plug 'ojroques/vim-oscyank'
       \ if v:event.operator is 'y' && v:event.regname is '' | call YankOSC52(getreg('+')) | endif
   augroup END
 
-  command! F f<bar>OSCYankReg%
+  command! F f<bar>silent OSCYankReg%
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -124,10 +124,6 @@ Plug 'joshdick/onedark.vim'
   augroup END
 
   syntax enable
-
-" Plug 'romainl/flattened'
-"   set notermguicolors
-"   syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -179,6 +175,10 @@ Plug 'dyng/ctrlsf.vim'
       \ "tab"      : "<C-T>",
       \ }
 
+  " This makes the preview window show up in the search window.  Just trying
+  " this out
+  let g:ctrlsf_preview_position = 'inside'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -215,7 +215,6 @@ Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 Plug 'itchyny/lightline.vim'
 
   let g:lightline = {
@@ -273,6 +272,11 @@ Plug 'suan/vim-instant-markdown'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" REGO
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Plug 'tsandall/vim-rego'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
@@ -302,8 +306,6 @@ Plug 'chase/vim-ansible-yaml'
 call plug#end()
 
 colorscheme onedark
-" colorscheme flattened_light
-" set background=light
 
 if has('nvim-0.5')
 
