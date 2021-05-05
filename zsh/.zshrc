@@ -109,7 +109,9 @@ alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
 alias gcfd="git clean -fd"
 alias gft="git fetch --tags"
 alias gl="git log"
-alias ggpf="git push origin $(git_current_branch) --force-with-lease"
+ggpf () {
+  git push origin $(git_current_branch) --force-with-lease
+}
 # overwrite the verbose part of this alias
 alias gc!="git commit --amend"
 alias gsh="git stash"
