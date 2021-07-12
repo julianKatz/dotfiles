@@ -65,7 +65,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 if has('nvim-0.5')
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'romgrk/nvim-treesitter-context'
 endif
 Plug 'airblade/vim-gitgutter'
@@ -82,7 +82,7 @@ Plug 'ojroques/vim-oscyank'
       \ if v:event.operator is 'y' && v:event.regname is '' | call YankOSC52(getreg('+')) | endif
   augroup END
 
-  command! F f<bar>silent OSCYankReg%
+  command! F f<bar> OSCYankReg%
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -301,6 +301,9 @@ Plug 'liuchengxu/vista.vim'
 
 " YAML
 Plug 'chase/vim-ansible-yaml'
+
+" GOLANG
+Plug 'sebdah/vim-delve'
 
 " END PLUGIN DECLARATIONS
 call plug#end()

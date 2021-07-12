@@ -3,7 +3,7 @@
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
-      "filetypes": ["sh"],
+      "filetypes": ["sh", ".bats"],
       "ignoredRootPaths": ["~"]
     },
     "dockerfile": {
@@ -49,6 +49,7 @@
   "diagnostic.warningSign": "\u26A0",
   "diagnostic.format": "%message => %source",
   "diagnostic.messageDelay": 100,
+  "diagnostic.checkCurrentLine": true,
 
   // makes the completion automatically select the first completed item
   "suggest.noselect": false,
