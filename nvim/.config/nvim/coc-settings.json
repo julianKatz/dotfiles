@@ -14,9 +14,14 @@
   },
 
   "go.goplsOptions": {
-    "completeUnimported": true,
-    "deepCompletion": true
+    "usePlaceholders": true
   },
+  "go.checkForUpdates": "ask",
+    // More than git-gutter and delve
+  "diagnostic.signPriority": 12,
+
+  "signature.enable": true,
+  "signature.preferShownAbove": false,
 
   // adjust the references preview window height
   "list.maxPreviewHeight": 30,
@@ -49,7 +54,7 @@
   "diagnostic.warningSign": "\u26A0",
   "diagnostic.format": "%message => %source",
   "diagnostic.messageDelay": 100,
-  "diagnostic.checkCurrentLine": true,
+  // "diagnostic.checkCurrentLine": true,
 
   // makes the completion automatically select the first completed item
   "suggest.noselect": false,

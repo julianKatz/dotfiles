@@ -114,3 +114,7 @@ endfunction
 " output.
 autocmd User EasyMotionPromptBegin silent! CocDisable
 autocmd User EasyMotionPromptEnd silent! CocEnable
+
+" Support showing signature help in insert mode by hitting Ctrl-U
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+inoremap <silent><C-U> <esc>:call CocActionAsync('showSignatureHelp')<cr> i

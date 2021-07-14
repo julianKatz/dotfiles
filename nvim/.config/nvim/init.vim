@@ -68,7 +68,14 @@ if has('nvim-0.5')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'romgrk/nvim-treesitter-context'
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Plug 'airblade/vim-gitgutter'
+
+  let g:gitgutter_sign_allow_clobber=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -304,6 +311,8 @@ Plug 'chase/vim-ansible-yaml'
 
 " GOLANG
 Plug 'sebdah/vim-delve'
+" One higher than git-gutter's default of 10
+let g:delve_sign_priority=11
 
 " END PLUGIN DECLARATIONS
 call plug#end()
