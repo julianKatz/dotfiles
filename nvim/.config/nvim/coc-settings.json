@@ -23,6 +23,10 @@
   "signature.enable": true,
   "signature.preferShownAbove": false,
 
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go"
+  ],
+
   // adjust the references preview window height
   "list.maxPreviewHeight": 30,
 

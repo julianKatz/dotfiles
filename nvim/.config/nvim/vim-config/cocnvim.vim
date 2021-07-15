@@ -1,13 +1,5 @@
 " COC EXTENSIONS
-Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-
-Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
- 
-" This on only works when installed with CocInstall"
-Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "
+let g:coc_global_extensions = ['coc-markdownlint', 'coc-git', 'coc-go', 'coc-diagnostic', 'coc-yank', 'coc-css', 'coc-tsserver', 'coc-json']
 
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
   " Key mapping for special yank list to go with this extension
@@ -118,3 +110,6 @@ autocmd User EasyMotionPromptEnd silent! CocEnable
 " Support showing signature help in insert mode by hitting Ctrl-U
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 inoremap <silent><C-U> <esc>:call CocActionAsync('showSignatureHelp')<cr> i
+
+" organize imports on save
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
