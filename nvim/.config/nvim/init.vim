@@ -313,6 +313,7 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'sebdah/vim-delve'
 " One higher than git-gutter's default of 10
 let g:delve_sign_priority=11
+nmap <silent> <leader>dt  :DlvTest<cr>
 
 " END PLUGIN DECLARATIONS
 call plug#end()
