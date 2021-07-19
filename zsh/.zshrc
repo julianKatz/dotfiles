@@ -96,6 +96,7 @@ alias gld="gcloud"
 alias szsh="source ~/.zshrc"
 alias m="make"
 alias x="exit"
+alias pd="popd"
 
 alias dev="cd ${HOME}/dev"
 
