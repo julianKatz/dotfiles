@@ -313,7 +313,10 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'sebdah/vim-delve'
 " One higher than git-gutter's default of 10
 let g:delve_sign_priority=11
-nmap <silent> <leader>dt  :DlvTest<cr>
+
+" Only set delve test mapping for golang files
+" How-to link: https://vi.stackexchange.com/a/10666
+autocmd FileType go nnoremap <buffer> <silent> <leader>t  :DlvTest<cr>
 
 " END PLUGIN DECLARATIONS
 call plug#end()

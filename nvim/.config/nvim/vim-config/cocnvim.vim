@@ -65,7 +65,7 @@ nmap <leader>rf <Plug>(coc-refactor)
 " vmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
 " " Show all diagnostics
-nmap <silent> <leader>dg  :<C-u>CocFzfList diagnostics<cr>
+nmap <silent> <leader>d  :<C-u>CocFzfList diagnostics<cr>
 nmap <silent> <leader>cl  :CocFzfList<cr>
 nmap <silent> <leader>cc  :CocCommand<cr>
 " requires the `pynvim` to be installed on the system
