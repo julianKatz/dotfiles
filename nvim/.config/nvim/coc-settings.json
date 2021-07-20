@@ -45,11 +45,6 @@
 
   // ---- DIAGNOSTIC INFO ---- //
 
-  // Adds errors inline next to code in red
-  "diagnostic.virtualText": false,
-  "diagnostic.virtualTextPrefix": "      ",
-  "diagnostic.virtualTextLineSeparator": " \\ ",
-
   // Show the virtual window with the error
   "diagnostic.enableMessage": "always",
   "diagnostic.messageTarget": "float",
@@ -58,7 +53,7 @@
   "diagnostic.warningSign": "\u26A0",
   "diagnostic.format": "%message => %source",
   "diagnostic.messageDelay": 100,
-  // "diagnostic.checkCurrentLine": true,
+  "diagnostic.checkCurrentLine": true,
 
   // makes the completion automatically select the first completed item
   "suggest.noselect": false,

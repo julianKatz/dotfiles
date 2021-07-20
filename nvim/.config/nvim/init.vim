@@ -76,6 +76,11 @@ endif
 Plug 'airblade/vim-gitgutter'
 
   let g:gitgutter_sign_allow_clobber=0
+  let g:gitgutter_sign_added = '+'
+  let g:gitgutter_sign_modified = '>'
+  let g:gitgutter_sign_removed = '-'
+  let g:gitgutter_sign_removed_first_line = '^'
+  let g:gitgutter_sign_modified_removed = '<'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -114,7 +119,7 @@ Plug 'joshdick/onedark.vim'
 
   set notermguicolors
 
-  let g:onedark_terminal_italics=1
+  " let g:onedark_terminal_italics=1
 
   augroup colorextend
     autocmd!

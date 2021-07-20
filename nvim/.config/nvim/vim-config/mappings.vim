@@ -4,7 +4,6 @@ vnoremap // y/<C-R>"<CR>
 " clear search highlighting, use space bar, l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
 
-
 " Make yank/paste more like clipboard
 xnoremap p pgvy
 

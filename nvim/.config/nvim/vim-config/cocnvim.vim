@@ -1,5 +1,5 @@
 " COC EXTENSIONS
-let g:coc_global_extensions = ['coc-markdownlint', 'coc-git', 'coc-go', 'coc-diagnostic', 'coc-yank', 'coc-css', 'coc-tsserver', 'coc-json']
+let g:coc_global_extensions = ['coc-markdownlint', 'coc-go', 'coc-diagnostic', 'coc-yank', 'coc-css', 'coc-tsserver', 'coc-json']
 
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
   " Key mapping for special yank list to go with this extension
