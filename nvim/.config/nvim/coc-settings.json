@@ -14,7 +14,8 @@
   },
 
   "go.goplsOptions": {
-    "usePlaceholders": true
+    "usePlaceholders": true,
+      "gofumpt": true
   },
   "go.checkForUpdates": "ask",
     // More than git-gutter and delve
@@ -24,7 +25,9 @@
   "signature.preferShownAbove": false,
 
   "coc.preferences.formatOnSaveFiletypes": [
-    "go"
+    "go",
+    "json",
+    "yaml"
   ],
 
   // adjust the references preview window height
@@ -52,8 +55,10 @@
   "diagnostic.errorSign": "\u2717" ,
   "diagnostic.warningSign": "\u26A0",
   "diagnostic.format": "%message => %source",
-  "diagnostic.messageDelay": 100,
+  "diagnostic.messageDelay": 50,
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.autoRefresh":  true,
 
   // makes the completion automatically select the first completed item
   "suggest.noselect": false,
