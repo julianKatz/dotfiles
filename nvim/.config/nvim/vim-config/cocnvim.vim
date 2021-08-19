@@ -1,5 +1,5 @@
 " COC EXTENSIONS
-let g:coc_global_extensions = ['coc-markdownlint', 'coc-go', 'coc-diagnostic', 'coc-yank', 'coc-css', 'coc-tsserver', 'coc-json']
+let g:coc_global_extensions = ['coc-markdownlint', 'coc-go', 'coc-diagnostic', 'coc-yank', 'coc-css', 'coc-tsserver', 'coc-json', 'coc-prettier']
 
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
   " Key mapping for special yank list to go with this extension
@@ -52,6 +52,7 @@ nmap <silent> <leader>i  <Plug>(coc-diagnostic-info)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gv :vsplit<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
