@@ -84,8 +84,7 @@ Plug 'mhinz/vim-signify'
 
 Plug 'ojroques/vim-oscyank'
 
-  autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif
-
+  autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg+ | endif
 
   command! F f<bar> OSCYankReg%
 
