@@ -73,14 +73,10 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
-  let g:gitgutter_sign_allow_clobber=0
-  let g:gitgutter_sign_added = '+'
-  let g:gitgutter_sign_modified = '>'
-  let g:gitgutter_sign_removed = '-'
-  let g:gitgutter_sign_removed_first_line = '^'
-  let g:gitgutter_sign_modified_removed = '<'
+  set updatetime=100
+  let g:signify_sign_change="~"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -88,11 +84,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'ojroques/vim-oscyank'
 
-  augroup OSCYank
-    autocmd!
-    autocmd TextYankPost *
-      \ if v:event.operator is 'y' && v:event.regname is '' | call YankOSC52(getreg('+')) | endif
-  augroup END
+  autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif
+
 
   command! F f<bar> OSCYankReg%
 
@@ -322,6 +315,9 @@ let g:delve_sign_priority=11
 " Only set delve test mapping for golang files
 " How-to link: https://vi.stackexchange.com/a/10666
 autocmd FileType go nnoremap <buffer> <silent> <leader>t  :DlvTest<cr>
+autocmd FileType go nnoremap <buffer> <silent> <leader>dc  :DlvClearAll<cr>
+autocmd FileType go nnoremap <buffer> <silent> <leader>da  :DlvAddBreakpoint<cr>
+autocmd FileType go nnoremap <buffer> <silent> <leader>dr  :DlvRemoveBreakpoint<cr>
 
 " END PLUGIN DECLARATIONS
 call plug#end()
