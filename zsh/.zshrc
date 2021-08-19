@@ -123,6 +123,8 @@ alias gsh="git stash"
 # variables for faster kubectl
 alias kls="kubectl config get-contexts"
 alias kaf="kubectl apply -f"
+alias kdf="kubeclt delete -f"
+alias wk="watch kubectl"
 
 # tmux
 alias tm="tmux"
