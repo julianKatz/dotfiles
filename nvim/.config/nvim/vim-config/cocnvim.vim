@@ -1,5 +1,15 @@
 " COC EXTENSIONS
-let g:coc_global_extensions = ['coc-markdownlint', 'coc-go', 'coc-diagnostic', 'coc-yank', 'coc-css', 'coc-tsserver', 'coc-json', 'coc-prettier']
+let g:coc_global_extensions = [
+  \ 'coc-markdownlint',
+  \ 'coc-go',
+  \ 'coc-diagnostic',
+  \ 'coc-yank',
+  \ 'coc-css',
+  \ 'coc-tsserver',
+  \ 'coc-json',
+  \ 'coc-prettier',
+  \]
+
 
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
   " Key mapping for special yank list to go with this extension
@@ -71,6 +81,10 @@ nmap <silent> <leader>cl  :CocFzfList<cr>
 nmap <silent> <leader>cc  :CocCommand<cr>
 " requires the `pynvim` to be installed on the system
 nmap <silent> <leader>cs  :CocFzfList symbols<cr>
+
+nmap <silent> [s :CocCommand document.jumpToPrevSymbol<cr>
+nmap <silent> ]s :CocCommand document.jumpToNextSymbol<cr>
+
 " Manage extensions
 " nmap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
