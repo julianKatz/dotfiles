@@ -15,7 +15,14 @@
 
   "go.goplsOptions": {
     "usePlaceholders": true,
-    "gofumpt": true
+    "gofumpt": true,
+    "hoverKind": "FullDocumentation",
+    "semanticTokens": true,
+    "analyses": {
+      "shadow": true,
+      "unusedparams": true,
+      "unusedresult": true
+    }
   },
   "go.checkForUpdates": "ask",
   // More than git-gutter and delve
