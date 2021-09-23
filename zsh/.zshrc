@@ -105,8 +105,8 @@ alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=
 
 alias gpmr="git pull origin master --rebase"
 alias glmr="git pull origin master --rebase"
-alias glu="git pull upstream master"
-alias glur="git pull upstream master --rebase"
+alias glum="git pull upstream master"
+alias glumr="git pull upstream master --rebase"
 alias gdno="git --no-pager diff --name-only"
 alias gcho="git branch | fzf | xargs -I {} git checkout {}"
 alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
@@ -120,6 +120,7 @@ ggpf () {
 # overwrite the verbose part of this alias
 alias gc!="git commit --amend"
 alias gsh="git stash"
+alias gpgt="git push origin HEAD:refs/for/master"
 
 # variables for faster kubectl
 alias kls="kubectl config get-contexts"
