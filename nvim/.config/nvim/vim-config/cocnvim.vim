@@ -64,7 +64,7 @@ nmap <silent> <leader>i  <Plug>(coc-diagnostic-info)
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gv :vsplit<CR><Plug>(coc-definition)
-nmap <silent> gt :tab sp<CR><Plug>(coc-definition)
+nmap <silent> gnt :tab sp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -82,7 +82,11 @@ nmap <silent> <leader>d  :<C-u>CocFzfList diagnostics<cr>
 nmap <silent> <leader>cl  :CocFzfList<cr>
 nmap <silent> <leader>cc  :CocCommand<cr>
 " requires the `pynvim` to be installed on the system
-nmap <silent> <leader>cs  :CocFzfList symbols<cr>
+"
+" I had to temporarily disable this.  CocFzfList is creating a segmentation
+" fault.
+" nmap <silent> <leader>cs  :CocFzfList symbols<cr>
+nmap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 
 nmap <silent> [s :CocCommand document.jumpToPrevSymbol<cr>
 nmap <silent> ]s :CocCommand document.jumpToNextSymbol<cr>

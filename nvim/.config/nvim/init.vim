@@ -140,6 +140,8 @@ Plug 'jiangmiao/auto-pairs'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" I need to switch to the real version of this plugin: https://github.com/preservim/nerdtree
+" the real version has more features any many helper plugins
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 

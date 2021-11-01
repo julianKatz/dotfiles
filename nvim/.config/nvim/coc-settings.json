@@ -127,5 +127,7 @@
   },
 
   // coc-snippets
-  "snippets.priority": 99
+  "snippets.priority": 99,
+
+  "yaml.format.enable": true
 }
