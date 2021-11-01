@@ -11,10 +11,6 @@
 	prompt = false
 [alias]
 	d = difftool
-[pager]
-  diff = diff-so-fancy | less -+$LESS -R --pattern '^(commit )|((added|deleted|modified|renamed): )'
-  branch = less --quit-if-one-screen
-  # Try fixing the issue with `git diff --name-only` by installing a different pager like "moar"
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -37,9 +33,35 @@
 	insteadof = https://gke-internal.git.corp.google.com
 [pull]
 	rebase = false
-[core]
-	pager = less -+$LESS -R
 [url "sso://gke-internal.googlesource.com"]
 	insteadof = https://gke-internal.googlesource.com
 [checkout]
   defaultRemote = origin
+
+[pager]
+  diff = delta --paging=always
+  log = delta --paging=always
+  reflog = delta --paging=always
+  show = delta --paging=always
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive --dark
+
+[delta]
+  features = decorations collared-trogon navigate
+  line-numbers = true
+  side-by-side = true
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+  paging-mode = always
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+  paging-mode = always
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax

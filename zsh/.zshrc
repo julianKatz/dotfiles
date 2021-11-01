@@ -30,7 +30,6 @@ zplug "lib/completion",    from:oh-my-zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
-zplug "zdharma/zsh-diff-so-fancy"
 zplug "djui/alias-tips"
 
 zplug load
@@ -55,6 +54,8 @@ export EDITOR='nvim'
 
 # Add bin for tldr
 export PATH="$HOME/bin:$PATH"
+
+# export DELTA_PAGER="--paging=always"
 
 # Fix weird non unicode characters
 export LC_ALL="en_US.UTF-8"
@@ -97,6 +98,7 @@ alias szsh="source ~/.zshrc"
 alias m="make"
 alias x="exit"
 alias pd="popd"
+alias mt="make test"
 
 alias dev="cd ${HOME}/dev"
 
@@ -108,9 +110,13 @@ alias glmr="git pull origin master --rebase"
 alias glum="git pull upstream master"
 alias glumr="git pull upstream master --rebase"
 alias gdno="git --no-pager diff --name-only"
+alias gdm="git diff master"
+alias gdum="git diff upstream/master"
 alias gcho="git branch | fzf | xargs -I {} git checkout {}"
 alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
 alias gdcho="git diff --name-only | fzf | xargs -I {} git diff {}"
+alias gdmcho="git diff master --name-only | fzf | xargs -I {} git diff master -- {}"
+alias gcocho="git diff --name-only | fzf | xargs -I {} git checkout {}"
 alias gcfd="git clean -fd"
 alias gft="git fetch --tags"
 alias gl="git log"

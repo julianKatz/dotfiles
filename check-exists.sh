@@ -29,7 +29,8 @@ tools=( \
   nix \
   fd \
   fdfind \
-  zplug
+  zplug \
+  delta
 )
 
 header_printed=0
