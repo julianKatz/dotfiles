@@ -38,6 +38,9 @@
 [checkout]
   defaultRemote = origin
 
+[include]
+  path = ~/dotfiles/git/git-delta-themes-11-1-2021.gitconfig
+
 [pager]
   diff = delta --paging=always
   log = delta --paging=always
@@ -48,9 +51,10 @@
   diffFilter = delta --color-only --features=interactive --dark
 
 [delta]
-  features = decorations collared-trogon navigate
+  features = decorations tangara-chilensis navigate
+  # features = decorations villsau navigate
+  # features = decorations navigate
   line-numbers = true
-  side-by-side = true
 
 [delta "interactive"]
   keep-plus-minus-markers = false

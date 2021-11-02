@@ -55,7 +55,9 @@ export EDITOR='nvim'
 # Add bin for tldr
 export PATH="$HOME/bin:$PATH"
 
-# export DELTA_PAGER="--paging=always"
+# Configure delta's use of `less` to always open the pager and clear after
+# exiting (https://stackoverflow.com/a/12352224)
+export DELTA_PAGER="less -+FXc"
 
 # Fix weird non unicode characters
 export LC_ALL="en_US.UTF-8"
