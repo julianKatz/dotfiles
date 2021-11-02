@@ -22,7 +22,7 @@ set timeoutlen=1000   " Faster key response
 set ttimeoutlen=0     " Faster key response
 set cursorline        " Gently highlights line cursor is on
 set laststatus=2
-set updatetime=20
+set updatetime=1000
 
 " SEARCH
 set hlsearch          " highlight search matches
@@ -36,3 +36,7 @@ set nofoldenable
 
 " Make neovim (only) preview substitutions on the fly
 set inccommand=nosplit
+
+" These can mess with coc.nvim
+set nobackup
+set nowritebackup

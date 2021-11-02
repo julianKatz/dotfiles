@@ -9,6 +9,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-prettier',
   \ 'coc-yaml',
+  \ 'coc-highlight',
   \]
 
 
@@ -24,7 +25,6 @@ set cmdheight=2
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-" always show signcolumns
 set signcolumn=yes
 
 function! s:check_back_space() abort
@@ -34,6 +34,8 @@ endfunction
 
 " Autocomplete mappings:
 " - TAB will trigger autocompletion options when in 
+
+" Julian's original version
 inoremap <silent><expr> <c-J>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -52,6 +54,13 @@ imap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
 " Lets completely disable it
 
 " inoremap <expr> <cr> pumvisible() ? "\<C-g>u\<CR>" : "\<C-g>u\<CR>"
+
+" Still can't get the highlighting to work ???
+Plug 'antoinemadec/FixCursorHold.nvim'
+let g:cursorhold_updatetime=100
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -109,17 +118,44 @@ nmap <silent> <leader>col  :<C-u>Vista finder fzf<cr>
 " " Do default action for previous item.
 " nmap <silent> <leader>k  :<C-u>CocPrev<CR>
 " " Resume latest coc list
-" nmap <silent> <leader>p  :<C-u>CocListResume<CR>
+nmap <silent> <leader>cp  :<C-u>CocFzfListResume<CR>
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+" nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
 " Set K to show documentation
 " Use U to show documentation in preview window
 nnoremap <silent> U :call <SID>show_documentation()<CR>
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-  if &filetype == 'vim'
+  if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
