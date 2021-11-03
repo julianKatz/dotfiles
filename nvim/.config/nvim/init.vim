@@ -318,8 +318,6 @@ call plug#end()
 
 colorscheme onedark
 
-if has('nvim-0.5')
-
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
@@ -328,11 +326,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
-
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-
-endif
 
 " https://sunaku.github.io/vim-256color-bce.html
 if &term =~ '256color'
