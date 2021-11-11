@@ -76,7 +76,9 @@ nmap <silent> gv :vsplit<CR><Plug>(coc-definition)
 nmap <silent> gnt :tab sp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" I switched this out for (coc-references) because this one doesn't include
+" the function declaration, which is always noise for me
+nmap <silent> gr <Plug>(coc-references-used)
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -118,7 +120,7 @@ nmap <silent> <leader>col  :<C-u>Vista finder fzf<cr>
 " " Do default action for previous item.
 " nmap <silent> <leader>k  :<C-u>CocPrev<CR>
 " " Resume latest coc list
-nmap <silent> <leader>cp  :<C-u>CocFzfListResume<CR>
+nmap <silent> <leader>cr  :<C-u>CocFzfListResume<CR>
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
