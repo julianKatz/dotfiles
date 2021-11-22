@@ -7,6 +7,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Fix make target completion
+autoload -U compinit && compinit
+
 ###########################
 #####     PLUGINS     #####
 ###########################
@@ -30,10 +33,26 @@ zplug "lib/completion",    from:oh-my-zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
+
 zplug "djui/alias-tips"
 zplug "romkatv/zsh-defer", from:github
 
+zplug "Aloxaf/fzf-tab", from:github
+  # disable sort when completing `git checkout`
+  zstyle ':completion:*:git-checkout:*' sort false
+  # disable sort when completing options of any command
+  zstyle ':completion:complete:*:options' sort false
+  # set descriptions format to enable group support
+  zstyle ':completion:*:descriptions' format '[%d]'
+  # set list-colors to enable filename colorizing
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  # preview directory's content with exa when completing cd
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+
 zplug load
+
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+export LESSOPEN='|lessfilter %s | head -200'
 
 #####################################
 #####    SHELL CONFIGURATION    #####
@@ -65,8 +84,6 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 
-# Fix make target completion
-autoload -U compinit && compinit
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
 # Somehow this improves autocomplete
@@ -194,10 +211,11 @@ aws () {
 # only store unique commands in the history... improves fzf Ctrl-R
 setopt HIST_IGNORE_ALL_DUPS
 
-export FZF_COMPLETION_OPTS="--preview 'bat_or_tree {}'"
+# export FZF_COMPLETION_OPTS="--preview 'bat_or_tree {}'"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+# export FZF_DEFAULT_OPTS="--layout=reverse"
+# export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 ############################
 #####     SOURCING     #####

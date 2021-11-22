@@ -13,11 +13,14 @@ let g:coc_global_extensions = [
   \]
 
 
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+
+" Make coc nvim 
+let g:coc_fzf_preview_fullscreen=1
+
 Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
   " Key mapping for special yank list to go with this extension
-  nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
-Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+nnoremap <silent> <space>y  :CocFzfList yank<cr>
 
 " Better display for messages
 set cmdheight=2
@@ -93,11 +96,8 @@ nmap <silent> <leader>d  :<C-u>CocFzfList diagnostics<cr>
 nmap <silent> <leader>cl  :CocFzfList<cr>
 nmap <silent> <leader>cc  :CocCommand<cr>
 " requires the `pynvim` to be installed on the system
-"
-" I had to temporarily disable this.  CocFzfList is creating a segmentation
-" fault.
-" nmap <silent> <leader>cs  :CocFzfList symbols<cr>
-nmap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
+
+nmap <silent> <leader>cs  :CocFzfList symbols<cr>
 
 nmap <silent> [s :CocCommand document.jumpToPrevSymbol<cr>
 nmap <silent> ]s :CocCommand document.jumpToNextSymbol<cr>
