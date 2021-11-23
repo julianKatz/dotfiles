@@ -129,5 +129,12 @@
   // coc-snippets
   "snippets.priority": 99,
 
-  "yaml.format.enable": true
+  "yaml.format.enable": true,
+
+  // see this page for k8s yaml support: https://octetz.com/docs/2020/2020-01-06-vim-k8s-yaml-support/
+
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml"
+  },
+  "yaml.validate": false
 }
