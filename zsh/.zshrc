@@ -7,6 +7,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# configure zsh-vi-mode
+function zvm_config() {
+  # start zsh-vi-mode in insert mode
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+}
+
 # Fix make target completion
 autoload -U compinit && compinit
 
@@ -23,7 +29,6 @@ zplug 'romkatv/powerlevel10k', as:theme, depth:1
 # oh-my-zsh specific
 zplug "plugins/git",       from:oh-my-zsh
 zplug "plugins/gitfast",   from:oh-my-zsh
-zplug "plugins/vi-mode",   from:oh-my-zsh
 zplug "plugins/fzf",       from:oh-my-zsh
 zplug "plugins/kubectl",   from:oh-my-zsh # for some reason this won't source the autocomplete, even though it runs the script
 zplug "lib/history",       from:oh-my-zsh
@@ -36,6 +41,7 @@ zplug "zsh-users/zsh-completions"
 
 zplug "djui/alias-tips"
 zplug "romkatv/zsh-defer", from:github
+zplug "jeffreytse/zsh-vi-mode"
 
 zplug "Aloxaf/fzf-tab", from:github
   # disable sort when completing `git checkout`
@@ -46,13 +52,21 @@ zplug "Aloxaf/fzf-tab", from:github
   zstyle ':completion:*:descriptions' format '[%d]'
   # set list-colors to enable filename colorizing
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  # limit users to root and myself
+  zstyle ':completion:*' users root $USER
   # preview directory's content with exa when completing cd
   zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+  # stole this from https://tlvince.com/slow-zsh-completion
+  zstyle ':completion:*' hosts off
 
 zplug load
 
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 export LESSOPEN='|lessfilter %s | head -200'
+
+__git_files () { 
+    _wanted files expl 'local files' _files     
+}
 
 #####################################
 #####    SHELL CONFIGURATION    #####
@@ -86,8 +100,6 @@ export LANGUAGE="en_US.UTF-8"
 
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-# Somehow this improves autocomplete
-zstyle ':completion:*' users root $USER
 
 export PATH="$PATH:${HOME}/.cargo/bin"
 
