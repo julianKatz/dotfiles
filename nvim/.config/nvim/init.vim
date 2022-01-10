@@ -194,12 +194,12 @@ Plug 'junegunn/fzf.vim'
   nnoremap <c-p> :Files<CR>
 
   " Make ripgrep the default command
-  command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --no-ignore --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-    \   <bang>0 ? fzf#vim#with_preview('up:60%')
-    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \   <bang>0)
+  " command! -bang -nargs=* Rg
+  "   \ call fzf#vim#grep(
+  "   \   'rg  -g '!{.git,node_modules,vendor}/*' --no-ignore --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  "   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  "   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  "   \   <bang>0)
 
   " Have to declare all actions to override some actions
   let g:fzf_action = {
@@ -297,9 +297,6 @@ Plug 'liuchengxu/vista.vim'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" YAML
-Plug 'chase/vim-ansible-yaml'
 
 " GOLANG
 Plug 'sebdah/vim-delve'

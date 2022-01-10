@@ -5,11 +5,6 @@
       "args": ["start"],
       "filetypes": ["sh", ".bats"],
       "ignoredRootPaths": ["~"]
-    },
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
     }
   },
 
@@ -19,7 +14,6 @@
     "hoverKind": "FullDocumentation",
     "semanticTokens": true,
     "analyses": {
-      "shadow": true,
       "unusedparams": true,
       "unusedresult": true
     }

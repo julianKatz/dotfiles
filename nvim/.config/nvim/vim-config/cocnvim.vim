@@ -7,11 +7,13 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-tsserver',
   \ 'coc-json',
-  \ 'coc-prettier',
-  \ 'coc-yaml',
   \ 'coc-highlight',
+  \ 'coc-docker',
   \]
 
+
+" Switch to the test file
+autocmd FileType go nmap <leader>tt :CocCommand go.test.toggle<cr>
 
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
