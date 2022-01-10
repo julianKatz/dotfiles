@@ -13,6 +13,7 @@ function zvm_config() {
   ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 }
 
+
 # Fix make target completion
 autoload -U compinit && compinit
 
@@ -218,7 +219,14 @@ aws () {
 #####     FZF     #####
 #######################
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# The plugin will auto execute this zvm_after_init function
+function zvm_after_init() {
+  # b/c fzf has key bindings that overlap with zvm, we have to wrap our fzf
+  # source in this function.  There is some flexibility in how this works, so I
+  # can refactor this in the future based on these example:
+  # https://github.com/jeffreytse/zsh-vi-mode#execute-extra-commands
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+}
 
 # only store unique commands in the history... improves fzf Ctrl-R
 setopt HIST_IGNORE_ALL_DUPS
