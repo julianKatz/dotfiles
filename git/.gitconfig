@@ -51,9 +51,9 @@
   diffFilter = delta --color-only --features=interactive --dark
 
 [delta]
-  features = decorations tangara-chilensis navigate
+  # features = decorations tangara-chilensis navigate
   # features = decorations villsau navigate
-  # features = decorations navigate
+  features = decorations navigate
   line-numbers = true
 
 [delta "interactive"]
