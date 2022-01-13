@@ -45,6 +45,10 @@ augroup filetype_based_spelling
   autocmd FileType text,markdown :setlocal spell spelllang=en_us
 augroup END
 
+" Treat .bats files like bash files
+autocmd BufEnter *.bats :setlocal filetype=bash
+
+
 " ----------------------------------------
 " PLUGINS
 " ----------------------------------------
@@ -77,6 +81,9 @@ Plug 'mhinz/vim-signify'
 
   set updatetime=100
   let g:signify_sign_change="~"
+
+  " Highlight the number that the change is on in relative numbers
+  let g:signify_number_highlight = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
