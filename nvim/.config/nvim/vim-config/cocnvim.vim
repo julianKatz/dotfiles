@@ -91,8 +91,7 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>rf <Plug>(coc-refactor)
 
 " Remap for format selected region
-" vmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>cf  <Plug>(coc-format)
 " " Show all diagnostics
 nmap <silent> <leader>d  :<C-u>CocFzfList diagnostics<cr>
 nmap <silent> <leader>cl  :CocFzfList<cr>
