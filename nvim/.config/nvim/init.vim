@@ -85,6 +85,8 @@ Plug 'mhinz/vim-signify'
   " Highlight the number that the change is on in relative numbers
   let g:signify_number_highlight = 1
 
+  let g:signify_sign_show_count = 0
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

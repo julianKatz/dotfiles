@@ -11,7 +11,6 @@ autocmd Filetype go setlocal ts=4 sw=4 expandtab
 
 set colorcolumn=100   " Add column n characters from left
 set linebreak         " Break line on whole word
-" set ttyfast           " Improves drawing of screen when scrolling
 set hidden            " Changes buffer behavior to hide rather than overrite
 set history=100       " Lengthens vim history
 set scrolloff=10      " Can't scroll within 10 lines of top of window
@@ -23,6 +22,8 @@ set ttimeoutlen=0     " Faster key response
 set cursorline        " Gently highlights line cursor is on
 set laststatus=2
 set updatetime=1000
+
+set numberwidth=8     " Set a minimum width for the number column
 
 " SEARCH
 set hlsearch          " highlight search matches
