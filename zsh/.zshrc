@@ -130,6 +130,7 @@ alias gld="gcloud"
 alias szsh="source ~/.zshrc"
 alias m="make"
 alias x="exit"
+alias :q="exit"
 alias pd="popd"
 alias mt="make test"
 
