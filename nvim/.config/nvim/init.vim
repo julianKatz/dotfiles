@@ -341,6 +341,12 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+" highlight the yanked thing for better UX
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=800 }
+augroup END
+
 
 " ----------- GOOGLE CONFIG -----------
 if filereadable("/usr/local/google/home/juliankatz/.config/nvim/google-specific.vim")
