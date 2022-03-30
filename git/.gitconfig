@@ -29,12 +29,8 @@
 	stripLeadingSymbols = false
 	markEmptyLines = false
 
-[url "sso://gke-internal.git.corp.google.com"]
-	insteadof = https://gke-internal.git.corp.google.com
 [pull]
 	rebase = false
-[url "sso://gke-internal.googlesource.com"]
-	insteadof = https://gke-internal.googlesource.com
 [checkout]
   defaultRemote = origin
 
@@ -69,3 +65,5 @@
     hunk-header-file-style = red
     hunk-header-line-number-style = "#067a00"
     hunk-header-style = file line-number syntax
+[url "sso://gke-internal.googlesource.com"]
+	insteadof = https://gke-internal.googlesource.com
