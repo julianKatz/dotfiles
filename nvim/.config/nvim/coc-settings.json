@@ -1,19 +1,4 @@
 {
-  "languageserver": {
-    "bash": {
-      "command": "bash-language-server",
-      "args": [
-        "start"
-      ],
-      "filetypes": [
-        "sh",
-        "bats"
-      ],
-      "ignoredRootPaths": [
-        "~"
-      ]
-    }
-  },
   "go.goplsOptions": {
     "usePlaceholders": true,
     "gofumpt": true,
@@ -126,4 +111,5 @@
   // coc-snippets
   "snippets.priority": 99,
   "yaml.format.enable": true
+  // coc-sh (bash-language-server)
 }

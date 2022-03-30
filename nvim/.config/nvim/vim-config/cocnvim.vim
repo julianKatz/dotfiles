@@ -3,26 +3,26 @@ let g:coc_global_extensions = [
   \ 'coc-markdownlint',
   \ 'coc-go',
   \ 'coc-diagnostic',
-  \ 'coc-yank',
   \ 'coc-css',
   \ 'coc-tsserver',
   \ 'coc-json',
   \ 'coc-highlight',
   \ 'coc-docker',
+  \ 'coc-sh',
   \]
 
 
 " Switch to the test file
 autocmd FileType go nmap <leader>tt :CocCommand go.test.toggle<cr>
 
-Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+Plug 'antoinemadec/coc-fzf'
 
 " Make coc nvim 
 let g:coc_fzf_preview_fullscreen=1
 
-Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
-  " Key mapping for special yank list to go with this extension
-nnoremap <silent> <space>y  :CocFzfList yank<cr>
+" Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
+"   " Key mapping for special yank list to go with this extension
+" nnoremap <silent> <space>y  :CocFzfList yank<cr>
 
 " Better display for messages
 set cmdheight=2
