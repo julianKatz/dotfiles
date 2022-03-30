@@ -42,6 +42,7 @@ zplug "zsh-users/zsh-completions"
 
 zplug "djui/alias-tips"
 zplug "romkatv/zsh-defer", from:github
+# Waiting on the solve to this bug as of 1/27/22: https://github.com/jeffreytse/zsh-vi-mode/issues/124
 zplug "jeffreytse/zsh-vi-mode"
 
 zplug "Aloxaf/fzf-tab", from:github
@@ -59,6 +60,9 @@ zplug "Aloxaf/fzf-tab", from:github
   zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
   # stole this from https://tlvince.com/slow-zsh-completion
   zstyle ':completion:*' hosts off
+
+# has to be the last plugin, b/c says in README
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug load
 
