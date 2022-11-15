@@ -67,3 +67,5 @@
     hunk-header-style = file line-number syntax
 [url "sso://gke-internal.googlesource.com"]
 	insteadof = https://gke-internal.googlesource.com
+[safe]
+	directory = /constraint-library

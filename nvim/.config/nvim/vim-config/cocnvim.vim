@@ -16,6 +16,8 @@ let g:coc_global_extensions = [
 autocmd FileType go nmap <leader>tt :CocCommand go.test.toggle<cr>
 
 Plug 'antoinemadec/coc-fzf'
+" This fzf requires `pynvim` to be available, and errors out when it isn't
+" upgraded.  See https://github.com/neovim/pynvim
 
 " Make coc nvim 
 let g:coc_fzf_preview_fullscreen=1
@@ -42,14 +44,25 @@ endfunction
 
 " Julian's original version
 inoremap <silent><expr> <c-J>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-imap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><c-K> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" imap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " I've tried different options for a better key for selecting a completion
 " option.  But it turns out that they're all broken or slow.  The best
@@ -99,6 +112,7 @@ nmap <silent> <leader>cc  :CocCommand<cr>
 " requires the `pynvim` to be installed on the system
 
 nmap <silent> <leader>cs  :CocFzfList symbols<cr>
+nmap <silent> <leader>sl  :CocFzfList outline<cr>
 
 nmap <silent> [s :CocCommand document.jumpToPrevSymbol<cr>
 nmap <silent> ]s :CocCommand document.jumpToNextSymbol<cr>
