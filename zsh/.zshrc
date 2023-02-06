@@ -80,6 +80,9 @@ __git_files () {
 # Make filesystem navigation more like oh-my-zsh
 setopt autocd autopushd
 
+# Make the `#` character be a comment in interactive shells
+setopt INTERACTIVE_COMMENTS
+
 # I've had pasting problems in the past.  This has fixed before
 ## fix slow pasting with fast-syntax-highlight
 #zstyle ':bracketed-paste-magic' active-widgets '.self-*'
