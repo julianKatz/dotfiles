@@ -95,6 +95,11 @@ Plug 'ojroques/vim-oscyank'
 
   autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg+ | endif
 
+  " It should really be able to do this on its own, but overriding here and
+  " adding `set -s set-clipboard on` to my .tmux.conf got yanking working
+  " again
+  let g:oscyank_term = 'default'
+
   command! F f<bar> OSCYankReg%
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -254,24 +259,6 @@ Plug 'itchyny/lightline.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" JAVASCRIPT
-Plug 'pangloss/vim-javascript'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'mxw/vim-jsx'
-
-  let g:jsx_ext_required = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" TYPESCRIPT
-Plug 'leafgarland/typescript-vim'
-
-" RUBY
-Plug 'tpope/vim-endwise'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " MARKDOWN
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'suan/vim-instant-markdown'
@@ -326,7 +313,7 @@ colorscheme onedark
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+  ensure_installed = { "go" },
   highlight = {
     enable = true,
   },
