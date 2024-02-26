@@ -1,0 +1,13 @@
+#!/bin/bash
+
+CONTEXT=$1
+
+if [ "$CONTEXT" = "" ]; then
+  echo "Error: must include search term"
+  kubectl config get-contexts
+  exit 1
+fi
+
+ACTUAL=$(kubectl config get-contexts | grep -G "${CONTEXT}" | awk {'print $2'})
+
+kubectl config use-context $ACTUAL

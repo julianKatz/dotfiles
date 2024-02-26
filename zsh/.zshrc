@@ -1,4 +1,6 @@
+#
 # zmodload zsh/zprof
+source ~/.zplug/repos/romkatv/zsh-defer/zsh-defer.plugin.zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -23,9 +25,7 @@ autoload -U compinit && compinit
 
 source ~/.zplug/init.zsh
 
-zplug 'romkatv/powerlevel10k', as:theme, depth:1
-
-# zplug mafredri/zsh-async, from:github
+zplug 'romkatv/powerlevel10k', as:theme
 
 # oh-my-zsh specific
 zplug "plugins/git",       from:oh-my-zsh
@@ -43,7 +43,8 @@ zplug "zsh-users/zsh-completions"
 zplug "djui/alias-tips"
 zplug "romkatv/zsh-defer", from:github
 # Waiting on the solve to this bug as of 1/27/22: https://github.com/jeffreytse/zsh-vi-mode/issues/124
-zplug "jeffreytse/zsh-vi-mode"
+# zplug "jeffreytse/zsh-vi-mode"
+zplug "softmoth/zsh-vim-mode"
 
 zplug "Aloxaf/fzf-tab", from:github
   # disable sort when completing `git checkout`
@@ -79,6 +80,9 @@ __git_files () {
 
 # Make filesystem navigation more like oh-my-zsh
 setopt autocd autopushd
+
+# Allow comments in interactive shells.  This is helpful when pasting commands.
+setopt interactive_comments
 
 # I've had pasting problems in the past.  This has fixed before
 ## fix slow pasting with fast-syntax-highlight
@@ -122,7 +126,7 @@ alias dk="docker"
 alias dkk="dk kill"
 alias dkps="dk ps"
 alias cat-basic="/usr/bin/cat"
-alias cat="bat"
+alias cat="batcat"
 alias l="exa -l"
 alias ll="exa -la"
 alias ls="ls --color=tty"
@@ -173,7 +177,6 @@ alias kdf="kubeclt delete -f"
 alias wk="watch kubectl"
 
 # tmux
-alias tm="tmux"
 alias tma="tmux attach -t"
 alias tmd="tmux detach"
 alias tmls="tmux ls"
