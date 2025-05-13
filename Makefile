@@ -1,10 +1,38 @@
+brew:
+	brew update
+	brew bundle --file=homebrew/Brewfile
+	
+
 stow:
 	./stow-all.sh
 
-check:
-	./check-exists.sh
+default-shell:
+	@ZSH_PATH=$$(which zsh); \
+	CURRENT_SHELL=$$(dscl . -read ~/ UserShell | awk '{print $$2}'); \
+	if [ "$$CURRENT_SHELL" = "$$ZSH_PATH" ]; then \
+		echo "✅ Zsh is already the default shell."; \
+	else \
+		if ! grep -q "$$ZSH_PATH" /etc/shells; then \
+			echo "➕ Adding $$ZSH_PATH to /etc/shells"; \
+			echo "$$ZSH_PATH" | sudo tee -a /etc/shells; \
+		fi; \
+		echo "🔁 Changing default shell to $$ZSH_PATH"; \
+		chsh -s "$$ZSH_PATH"; \
+	fi
 
-setup: stow check
+setup: brew default-shell zinit stow
+
+zinit:
+	@echo "🔍 Checking for zinit..."
+	@if [ ! -d "$$HOME/.zinit" ]; then \
+		echo "📥 Installing zinit..."; \
+		sh -c "$$(curl -fsSL https://git.io/zinit-install)"; \
+	else \
+		echo "✅ zinit already installed."; \
+	fi
 
 .PHONY: \
-	stow
+	stow \
+	brew \
+	default-shell \
+	zinit

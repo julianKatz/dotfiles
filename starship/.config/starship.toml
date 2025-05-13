@@ -1,0 +1,42 @@
+add_newline = false
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 20
+
+[git_status]
+style = "bold red"
+disabled = false
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+style = "bold blue"
+
+[cmd_duration]
+min_time = 500
+format = "⏱ [$duration]($style) "
+
+[python]
+format = '🐍 [$virtualenv]($style) '
+style = "bold yellow"
+
+[custom.makefile]
+command = 'echo "🛠️"'
+when = 'test -f Makefile'
+format = '[$output]($style) '
+style = 'bold yellow'
+
+[hostname]
+disabled = true
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = '%H:%M'  # 24-hour format; change to '%I:%M %p' for 12-hour
+style = 'bold grey'
+

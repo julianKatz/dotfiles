@@ -1,0 +1,32 @@
+# GUI apps (installed via Homebrew Cask)
+cask "google-chrome"
+cask "alfred"
+cask "rectangle"     # Replaces Spectacle (now deprecated)
+cask "flycut"
+
+# Terminal stuff
+cask "cursor"
+cask "wezterm"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-fira-code-nerd-font"
+cask "font-hack-nerd-font"
+cask "font-caskaydia-cove-nerd-font"
+
+# CLI tools
+brew "stow"
+brew "nvim"
+brew "tmux"
+brew "docker"
+brew "rg"                    # ripgrep
+brew "fzf"
+brew "bat"
+brew "bat-extras"           # includes batgrep
+brew "kubectl"
+brew "kubectx"              # for switching Kubernetes contexts
+brew "gopls"
+brew "tldr"
+brew "zplug"
+brew "delta"
+brew "starship"             # fast, customizable prompt
+brew "node"
+brew "go"
