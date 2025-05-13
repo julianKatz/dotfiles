@@ -8,7 +8,7 @@ require("lazy").setup({
   { "echasnovski/mini.surround", version = false },
   { "tpope/vim-repeat" },
   { "christoomey/vim-tmux-navigator" },
-  { "ggandor/leap.nvim" }, -- Easymotion alternative
+  { "easymotion/vim-easymotion" },
   { "karb94/neoscroll.nvim" },
 
   -- Git
@@ -30,4 +30,3 @@ require("lazy").setup({
   { "numToStr/Comment.nvim", opts = {} },
   { "windwp/nvim-autopairs", opts = {} },
 })
-

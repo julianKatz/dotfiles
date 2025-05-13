@@ -30,3 +30,4 @@ brew "delta"
 brew "starship"             # fast, customizable prompt
 brew "node"
 brew "go"
+brew "tree"
