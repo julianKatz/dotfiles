@@ -26,12 +26,13 @@ return {
   },
 
   font = wezterm.font_with_fallback({
+    "MesloLGS Nerd Font",
     "FiraCode Nerd Font",
     "CaskaydiaCove Nerd Font",
     "JetBrainsMono Nerd Font",
     "Menlo",
   }),
-  font_size = 13.0,
+  font_size = 11.0,
   line_height = 1.1,
   freetype_render_target = "HorizontalLcd",  -- better LCD-style smoothing
   freetype_load_target = "Normal",
