@@ -35,7 +35,9 @@ format = '[[ $symbol $branch ](fg:#89CB15 bg:#111111)]($style)'
 
 [git_status]
 style = "bg:#111111"
-format = '[[($all_status$ahead_behind )](fg:#A2CC8A bg:#111111)]($style)'
+# Display counts for different git states with their symbols
+# (+ staged, ! modified, - deleted, » renamed, ? untracked, x conflicted)
+format = '[[ ${staged_symbol}$staged${modified_symbol}$modified${deleted_symbol}$deleted${renamed_symbol}$renamed${untracked_symbol}$untracked${conflicted_symbol}$conflicted$ahead_behind ](fg:#A2CC8A bg:#111111)]($style)'
 
 [nodejs]
 symbol = ""
