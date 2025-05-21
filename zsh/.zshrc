@@ -80,6 +80,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias gl='git log'
+alias x='exit'
 
 ### --- Starship Prompt ---------------------------------------------------
 

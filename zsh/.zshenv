@@ -24,7 +24,6 @@ alias gcho="git branch | fzf | xargs -I {} git checkout {}"
 alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
 alias gcfd="git clean -fd"
 alias gft="git fetch --tags"
-echo "BANG"
 
 # variables for faster kubectl
 alias kls="kubectl config get-contexts"
