@@ -14,11 +14,10 @@ $php\
 [ ](fg:#0a0a0a)\
 \n$character"""
 
-# New: This format string will be displayed on the right side of the screen
 right_format = """$time"""
 
 [directory]
-style = "fg:#e3e5e5 bg:#1a1a1a"
+style = "fg:#1BA6FA bg:#1a1a1a"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -32,19 +31,14 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "bg:#111111"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#111111)]($style)'
+format = '[[ $symbol $branch ](fg:#89CB15 bg:#111111)]($style)'
 
 [git_status]
 style = "bg:#111111"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#111111)]($style)'
+format = '[[($all_status$ahead_behind )](fg:#A2CC8A bg:#111111)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#0a0a0a"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#0a0a0a)]($style)'
-
-[rust]
-symbol = ""
 style = "bg:#0a0a0a"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#0a0a0a)]($style)'
 
@@ -53,17 +47,8 @@ symbol = ""
 style = "bg:#0a0a0a"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#0a0a0a)]($style)'
 
-[php]
-symbol = ""
-style = "bg:#0a0a0a"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#0a0a0a)]($style)'
-
 [time]
-disabled = false # Ensures the time module is active
+disabled = false
 time_format = "%R" # Hour:Minute Format (e.g., 12:34)
-style = "bg:#050505" # Darkest grey background for the time block
-format = '[[   $time ](fg:#a0a9cb bg:#050505)]($style)' # The actual format of the time display itself
-
-[character]
-success_symbol = "[>](bold green)"
-error_symbol = "[>](bold red)"
+style = "bg:#050505"
+format = '[[   $time ](fg:#a0a9cb bg:#050505)]($style)' # <-- This line is now correctly closed
