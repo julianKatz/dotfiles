@@ -11,10 +11,11 @@ $nodejs\
 $rust\
 $golang\
 $php\
-[](fg:#0a0a0a bg:#050505)\
-$time\
-[ ](fg:#050505)\
+[ ](fg:#0a0a0a)\
 \n$character"""
+
+# New: This format string will be displayed on the right side of the screen
+right_format = """$time"""
 
 [directory]
 style = "fg:#e3e5e5 bg:#1a1a1a"
@@ -58,10 +59,10 @@ style = "bg:#0a0a0a"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#0a0a0a)]($style)'
 
 [time]
-disabled = false # This ensures the time module is active
+disabled = false # Ensures the time module is active
 time_format = "%R" # Hour:Minute Format (e.g., 12:34)
-style = "bg:#050505" # Darkest grey background
-format = '[[  $time ](fg:#a0a9cb bg:#050505)]($style)'
+style = "bg:#050505" # Darkest grey background for the time block
+format = '[[   $time ](fg:#a0a9cb bg:#050505)]($style)' # The actual format of the time display itself
 
 [character]
 success_symbol = "[>](bold green)"
