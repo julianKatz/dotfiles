@@ -33,7 +33,7 @@ return {
     "Menlo",
   }),
   font_size = 11.0,
-  line_height = 1.1,
+  line_height = 1,
   freetype_render_target = "HorizontalLcd",  -- better LCD-style smoothing
   freetype_load_target = "Normal",
 
