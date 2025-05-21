@@ -3,6 +3,7 @@ cask "google-chrome"
 cask "alfred"
 cask "rectangle"     # Replaces Spectacle (now deprecated)
 cask "flycut"
+cask "signal"
 
 # Terminal stuff
 cask "cursor"

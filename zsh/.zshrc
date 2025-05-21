@@ -44,7 +44,11 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 # General completions
 zinit light zsh-users/zsh-completions
 
-# Git aliases
+# Git plugin
+git_current_branch() {
+  git symbolic-ref --quiet --short HEAD 2>/dev/null || \
+  git rev-parse --short HEAD 2>/dev/null
+}
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 # Custom make target completion
