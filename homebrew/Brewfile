@@ -1,3 +1,6 @@
+tap "dandavison/delta", "https://github.com/dandavison/delta"
+
+# Formulae: The git-delta application itself
 # GUI apps (installed via Homebrew Cask)
 cask "google-chrome"
 cask "alfred"
@@ -33,3 +36,4 @@ brew "starship"             # fast, customizable prompt
 brew "node"
 brew "go"
 brew "tree"
+brew "git-delta"
