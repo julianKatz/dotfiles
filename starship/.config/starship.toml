@@ -1,4 +1,5 @@
 add_newline = false
+right_format = "[$time]($style)"
 
 [character]
 success_symbol = "[❯](bold green)"
@@ -37,6 +38,5 @@ disabled = true
 [time]
 disabled = false
 format = '[$time]($style) '
-time_format = '%H:%M'  # 24-hour format; change to '%I:%M %p' for 12-hour
+time_format = '%H:%M'
 style = 'bold grey'
-
