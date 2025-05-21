@@ -86,3 +86,9 @@ alias x='exit'
 
 eval "$(starship init zsh)"
 
+### --- Work Config -------------------------------------------------------
+
+# Google workstation config
+if [[ -e $HOME/.zshrc-google ]]; then
+  source $HOME/.zshrc-google
+fi
