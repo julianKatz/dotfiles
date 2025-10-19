@@ -24,6 +24,11 @@ alias gcho="git branch | fzf | xargs -I {} git checkout {}"
 alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
 alias gcfd="git clean -fd"
 alias gft="git fetch --tags"
+alias glumr="git pull upstream master --rebase"
+
+ggpf () {
+  git push origin $(git_current_branch) --force-with-lease
+}
 
 # variables for faster kubectl
 alias kls="kubectl config get-contexts"
