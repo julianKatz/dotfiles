@@ -1,6 +1,7 @@
 brew:
 	brew update
 	brew bundle --file=homebrew/Brewfile
+	brew upgrade
 	
 
 stow:

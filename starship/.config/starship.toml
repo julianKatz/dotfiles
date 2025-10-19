@@ -1,42 +1,56 @@
-add_newline = false
+format = """
+[░▒▓](#222222)\
+[ ](bg:#222222 fg:#e3e5e5)\
+[](bg:#1a1a1a fg:#222222)\
+$directory\
+[](fg:#1a1a1a bg:#111111)\
+$git_branch\
+$git_status\
+[](fg:#111111 bg:#0a0a0a)\
+$nodejs\
+$rust\
+$golang\
+$php\
+[ ](fg:#0a0a0a)\
+\n$character"""
 
-[character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
-
-[git_branch]
-symbol = "🌱 "
-truncation_length = 20
-
-[git_status]
-style = "bold red"
-disabled = false
+right_format = """$time"""
 
 [directory]
+style = "fg:#1BA6FA bg:#1a1a1a"
+format = "[ $path ]($style)"
 truncation_length = 3
-truncate_to_repo = false
-style = "bold blue"
+truncation_symbol = "…/"
 
-[cmd_duration]
-min_time = 500
-format = "⏱ [$duration]($style) "
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
-[python]
-format = '🐍 [$virtualenv]($style) '
-style = "bold yellow"
+[git_branch]
+symbol = ""
+style = "bg:#111111"
+format = '[[ $symbol $branch ](fg:#89CB15 bg:#111111)]($style)'
 
-[custom.makefile]
-command = 'echo "🛠️"'
-when = 'test -f Makefile'
-format = '[$output]($style) '
-style = 'bold yellow'
+[git_status]
+style = "bg:#111111"
+# Display counts for different git states with their symbols
+# (+ staged, ! modified, - deleted, » renamed, ? untracked, x conflicted)
+format = '[[ ${staged_symbol}$staged${modified_symbol}$modified${deleted_symbol}$deleted${renamed_symbol}$renamed${untracked_symbol}$untracked${conflicted_symbol}$conflicted$ahead_behind ](fg:#A2CC8A bg:#111111)]($style)'
 
-[hostname]
-disabled = true
+[nodejs]
+symbol = ""
+style = "bg:#0a0a0a"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#0a0a0a)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#0a0a0a"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#0a0a0a)]($style)'
 
 [time]
 disabled = false
-format = '[$time]($style) '
-time_format = '%H:%M'  # 24-hour format; change to '%I:%M %p' for 12-hour
-style = 'bold grey'
-
+time_format = "%R" # Hour:Minute Format (e.g., 12:34)
+style = "bg:#050505"
+format = '[[   $time ](fg:#a0a9cb bg:#050505)]($style)' # <-- This line is now correctly closed
