@@ -7,6 +7,7 @@ cask "alfred"
 cask "rectangle"     # Replaces Spectacle (now deprecated)
 cask "flycut"
 cask "signal"
+cask "whatsapp"
 
 # Terminal stuff
 cask "cursor"
