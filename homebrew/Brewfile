@@ -9,6 +9,7 @@ cask "flycut"
 cask "signal"
 cask "whatsapp"
 cask "spotify"
+cask "claude-code"
 
 # Terminal stuff
 cask "cursor"
