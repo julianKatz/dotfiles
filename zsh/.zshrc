@@ -93,6 +93,9 @@ alias l='ls -CF'
 alias gl='git log'
 alias x='exit'
 
+# gcloud autocomplete
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
