@@ -41,3 +41,5 @@ brew "go"
 brew "tree"
 brew "git-delta"
 brew "jq"
+brew "uv"                   # Version manger for python
+brew "direnv"
