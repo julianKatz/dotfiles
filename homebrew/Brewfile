@@ -10,9 +10,9 @@ cask "signal"
 cask "whatsapp"
 cask "spotify"
 cask "claude-code"
+cask "visual-studio-code"
 
 # Terminal stuff
-cask "cursor"
 cask "wezterm"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-fira-code-nerd-font"
