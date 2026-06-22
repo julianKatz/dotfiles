@@ -19,9 +19,10 @@ cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-meslo-lg-nerd-font"
-cask "google-cloud-sdk"
 
 # CLI tools
+cask "gcloud-cli"
+brew "awscli"
 brew "stow"
 brew "nvim"
 brew "tmux"
