@@ -45,3 +45,4 @@ brew "git-delta"
 brew "jq"
 brew "uv"                   # Version manger for python
 brew "direnv"
+brew "terraform"
