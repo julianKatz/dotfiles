@@ -45,4 +45,6 @@ brew "git-delta"
 brew "jq"
 brew "uv"                   # Version manger for python
 brew "direnv"
-brew "terraform"
+tap "hashicorp/tap"
+brew "hashicorp/tap/terraform"
+brew "watch"
