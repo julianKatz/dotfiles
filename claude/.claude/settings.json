@@ -6,5 +6,8 @@
     "karpathy-skills": {
       "source": { "source": "github", "repo": "forrestchang/andrej-karpathy-skills" }
     }
+  },
+  "permissions": {
+    "defaultMode": "auto"
   }
 }
