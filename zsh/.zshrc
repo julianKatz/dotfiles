@@ -32,6 +32,9 @@ zstyle ':completion::complete:*' cache-path ~/.zcompcache
 
 compinit
 
+### --- Other settings ----------------------------------------------------
+setopt interactivecomments
+
 ### --- Plugins -----------------------------------------------------------
 
 #### --- fzf + ripgrep -----------------------------------------------------
