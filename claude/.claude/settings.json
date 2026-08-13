@@ -2,6 +2,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
   "enabledPlugins": {
     "andrej-karpathy-skills@karpathy-skills": true,
     "typescript-lsp@claude-plugins-official": true,
@@ -16,6 +17,5 @@
     }
   },
   "effortLevel": "xhigh",
-  "skipWorkflowUsageWarning": true,
-  "model": "opus[1m]"
+  "skipWorkflowUsageWarning": true
 }
