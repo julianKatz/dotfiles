@@ -1,8 +1,9 @@
 brew:
 	brew update
+	./brew-repair.sh
 	brew bundle --file=homebrew/Brewfile
 	brew upgrade
-	
+
 
 stow:
 	./stow-all.sh
