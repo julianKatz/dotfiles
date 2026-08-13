@@ -15,5 +15,7 @@
       }
     }
   },
-  "effortLevel": "xhigh"
+  "effortLevel": "xhigh",
+  "skipWorkflowUsageWarning": true,
+  "model": "opus[1m]"
 }
