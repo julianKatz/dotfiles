@@ -1,4 +1,7 @@
 """Tests for render.py. Run from this directory: python3 -B -m unittest test_render"""
+import json
+import os
+import tempfile
 import unittest
 
 import render
@@ -61,6 +64,21 @@ class Build(unittest.TestCase):
         r = render.build(None, PR, MANIFEST, {"retro": None, "missing_lenses": ["rework"]}, "open", "now")
         self.assertEqual(r["findings"], [])
         self.assertIn("no result from rework", render.markdown(r))
+
+    def test_unwraps_task_output_file(self):
+        bare = result(finding("a"))
+        self.assertIs(render.unwrap(bare), bare)
+        self.assertEqual(render.unwrap({"summary": "s", "result": bare}), bare)
+        self.assertEqual(render.unwrap({"summary": "s", "result": json.dumps(bare)}), bare)
+
+    def test_bad_refs_lists_only_missing_rows(self):
+        work = tempfile.mkdtemp()
+        os.makedirs(os.path.join(work, "digests"))
+        with open(os.path.join(work, "digests", "abcdef12-rest.md"), "w") as f:
+            f.write("# t\n\nL5 10:00 JULIAN: hi\nL12 TOOL Bash: ls\n")
+        f = finding("a")
+        f["refs"] = ["abcdef12:L5", "abcdef12:L12", "abcdef12:L6", "00000000:L5", "pr:body"]
+        self.assertEqual(render.bad_refs([f], work), ["abcdef12:L6", "00000000:L5"])
 
     def test_name_uses_opened_date_and_repo(self):
         self.assertEqual(render.base_name("o/sellside", PR), "2026-11-06-sellside-pr112")

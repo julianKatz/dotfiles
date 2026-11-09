@@ -15,8 +15,10 @@ Schema of the .json (version 1):
                 proposed_change: {target, text}, actor}]
 """
 import argparse
+import glob
 import json
 import os
+import re
 from datetime import datetime, timezone
 
 SCHEMA = 1
@@ -108,19 +110,48 @@ def markdown(r):
     return "\n".join(lines)
 
 
+def bad_refs(findings, work):
+    """Refs that point at no row in the digests, e.g. "02f5f82e:L9999". A finding's evidence must exist."""
+    rows = {}
+    for path in glob.glob(os.path.join(work, "digests", "*.md")):
+        with open(path) as f:
+            rows[os.path.basename(path)[:8]] = set(re.findall(r"^L(\d+)\b", f.read(), re.M))
+    bad = []
+    for f in findings:
+        for ref in f.get("refs") or []:
+            m = re.match(r"([0-9a-f]{8}):L(\d+)$", ref)
+            if m and m.group(2) not in rows.get(m.group(1), ()):
+                bad.append(ref)
+    return bad
+
+
+def unwrap(result):
+    """The workflow's return value, whether given bare or as the background task's output file
+    ({"summary": ..., "result": {...}}), which is the only place the untruncated value lives."""
+    if isinstance(result, dict) and "retro" not in result and isinstance(result.get("result"), (dict, str)):
+        inner = result["result"]
+        return json.loads(inner) if isinstance(inner, str) else inner
+    return result
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--work", required=True)
-    ap.add_argument("--result", required=True, help="the workflow's return value, saved as JSON")
+    ap.add_argument("--result", required=True, help="the workflow's task output file, or its return value saved as JSON")
     ap.add_argument("--stage", choices=["open", "merge"], required=True)
     ap.add_argument("--out", default=os.path.expanduser("~/dev-applied-agents/retros"))
     args = ap.parse_args()
     load = lambda p: json.load(open(p))
     pr, manifest, result = load(os.path.join(args.work, "pr.json")), load(os.path.join(args.work, "manifest.json")), load(args.result)
+    result = unwrap(result)
     path = os.path.join(args.out, base_name(manifest["repo"], pr))
     previous = load(path + ".json") if os.path.exists(path + ".json") else None
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     record = build(previous, pr, manifest, result, args.stage, now)
+    bad = bad_refs([f for f in record["findings"] if f["stage"] == args.stage], args.work)
+    record["stages"][args.stage]["bad_refs"] = bad
+    if bad:
+        print(f"warning: {len(bad)} refs match no digest row: {', '.join(bad)}")
     os.makedirs(args.out, exist_ok=True)
     with open(path + ".json", "w") as f:
         json.dump(record, f, indent=1)

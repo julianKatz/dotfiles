@@ -59,15 +59,17 @@ say so; never hand-write a retro in place of the checked one.
 
 ### 4. Save
 
-Write the workflow's return value to `<work>/result.json`, then:
+The completion notification truncates the result; the full value is in the task's `<output-file>`. Pass that
+file as is:
 
 ```bash
-python3 ~/.claude/skills/pr-retro/scripts/render.py --work <work> --result <work>/result.json --stage <stage>
+python3 ~/.claude/skills/pr-retro/scripts/render.py --work <work> --result <output-file> --stage <stage>
 ```
 
 It writes `~/dev-applied-agents/retros/<opened date>-<repo>-pr<N>.json` and `.md` (merge stage adds to the open
-stage's file) and prints the .md path. Then spot-check two cited refs: `sed -n '<n>p' <transcript> | head -c 600`
-shows what the finding says. If a ref is wrong, say so in the wrap-up.
+stage's file), checks every cited `<session>:L<n>` against the digests (misses are printed and saved as
+`stages.<stage>.bad_refs`), and prints the .md path. Then read the top finding's first two refs
+(`sed -n '<n>p' <transcript> | head -c 600`) and confirm they show what it says. Report any bad ref.
 
 ### 5. Report
 
