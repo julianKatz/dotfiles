@@ -69,3 +69,5 @@
 	insteadof = https://gke-internal.googlesource.com
 [safe]
 	directory = /constraint-library
+[includeIf "gitdir:~/dev-applied-agents/"]
+	path = /Users/juliankatz/dev-applied-agents/.gitconfig

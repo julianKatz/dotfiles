@@ -20,3 +20,12 @@ is what makes a young repo unworkable.
 unverified. This matters most when I'm working at the behavior level and not
 reading the diff -- a plausible-looking wrong implementation has nothing
 catching it except the success criteria above.
+
+**Write tight.** Fewest words, each carrying meaning. Fragments and semicolons
+are fine; cut filler ("that's a", "you haven't"); pick the denser word. Keep
+because/so/but when giving a reason.
+
+- Not: "A sender on more than one deal gets no match, so the email goes to
+  Jake. That's a defensible default, but you haven't agreed it with Alexis."
+- But: "A sender on multiple deals is not matched; email sent directly to
+  Jake. Sensible default, but unconfirmed by Alexis."

@@ -27,6 +27,7 @@ brew "stow"
 brew "nvim"
 brew "tmux"
 brew "docker"
+brew "docker-credential-helper-ecr"  # docker pushes to AWS ECR with no login/keychain prompt
 brew "rg"                    # ripgrep
 brew "fzf"
 brew "bat"

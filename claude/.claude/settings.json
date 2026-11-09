@@ -17,5 +17,36 @@
   },
   "effortLevel": "xhigh",
   "ultracode": true,
-  "skipWorkflowUsageWarning": true
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark-daltonized",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$HOME/.claude/skills/pr-retro/scripts/pr_hook.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$HOME/.claude/skills/tldr/scripts/stop_hook.py\"",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$HOME/.claude/skills/daily-update/scripts/capture.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }
